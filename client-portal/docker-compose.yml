@@ -1,0 +1,34 @@
+services:
+  mongo:
+    image: mongo:7
+    container_name: buildtrack-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  api:
+    profiles: ["app"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: buildtrack-api
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      MongoDb__ConnectionString: mongodb://mongo:27017
+      MongoDb__DatabaseName: buildtrack_portal
+      Jwt__Issuer: BuildTrackPortal
+      Jwt__Audience: BuildTrackPortalUsers
+      Jwt__Key: change-this-local-development-secret-key-32chars
+    depends_on:
+      - mongo
+    volumes:
+      - ./uploads:/app/uploads
+
+volumes:
+  mongo-data:

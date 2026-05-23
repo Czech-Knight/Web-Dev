@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BuildTrack Client Portal</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="loginView" class="login-shell">
+    <section class="login-card">
+      <div class="brand-row">
+        <div class="brand-mark">BT</div>
+        <div>
+          <h1>BuildTrack</h1>
+          <p>Construction Client Portal</p>
+        </div>
+      </div>
+      <form id="loginForm" class="stack">
+        <label>Email
+          <input id="loginEmail" type="email" required value="admin@buildtrack.local">
+        </label>
+        <label>Password
+          <input id="loginPassword" type="password" required value="Admin@12345">
+        </label>
+        <button type="submit">Sign in</button>
+        <p id="loginError" class="error-text"></p>
+      </form>
+      <div class="demo-box">
+        <strong>Demo access</strong>
+        <span>Admin: admin@buildtrack.local / Admin@12345</span>
+        <span>Client: client@buildtrack.local / Client@12345</span>
+      </div>
+    </section>
+    <section class="hero-panel">
+      <span class="eyebrow">Client delivery dashboard</span>
+      <h2>Track construction progress, documents, tasks, and communication in one place.</h2>
+      <p>Designed for practical web development work involving .NET, MongoDB, frontend UX, debugging, documentation, and deployment readiness.</p>
+    </section>
+  </div>
+
+  <div id="appView" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="brand-row compact">
+        <div class="brand-mark">BT</div>
+        <div>
+          <h1>BuildTrack</h1>
+          <p id="userBadge">Signed in</p>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-link active" data-view="dashboard">Dashboard</button>
+        <button class="nav-link" data-view="admin" id="adminNav">Admin Panel</button>
+      </nav>
+      <button id="logoutBtn" class="secondary full">Logout</button>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">Portal overview</span>
+          <h2 id="pageTitle">Dashboard</h2>
+        </div>
+        <button id="refreshBtn" class="secondary">Refresh</button>
+      </header>
+
+      <section id="dashboardView">
+        <div id="projectCards" class="project-grid"></div>
+        <div id="projectDetail" class="detail-grid hidden">
+          <section class="panel span-2">
+            <div class="section-title">
+              <div>
+                <span class="eyebrow">Selected project</span>
+                <h3 id="detailName"></h3>
+              </div>
+              <span id="detailStatus" class="status-chip"></span>
+            </div>
+            <p id="detailDescription"></p>
+            <div class="meta-grid">
+              <div><span>Client</span><strong id="detailClient"></strong></div>
+              <div><span>Location</span><strong id="detailLocation"></strong></div>
+              <div><span>BIM package</span><strong id="detailBim"></strong></div>
+              <div><span>Budget</span><strong id="detailBudget"></strong></div>
+            </div>
+            <div class="progress-wrap">
+              <div class="progress-label"><span>Progress</span><strong id="detailProgressText"></strong></div>
+              <div class="progress"><div id="detailProgressBar"></div></div>
+            </div>
+            <div class="safety-box" id="detailSafety"></div>
+          </section>
+
+          <section class="panel">
+            <div class="section-title"><h3>Tasks</h3></div>
+            <div id="taskList" class="list"></div>
+          </section>
+
+          <section class="panel">
+            <div class="section-title"><h3>Documents</h3></div>
+            <form id="documentForm" class="inline-form">
+              <input id="documentInput" type="file" required>
+              <button type="submit">Upload</button>
+            </form>
+            <div id="documentList" class="list"></div>
+          </section>
+
+          <section class="panel span-2">
+            <div class="section-title"><h3>Comments</h3></div>
+            <form id="commentForm" class="inline-form">
+              <input id="commentInput" type="text" placeholder="Write a project update or client note" required>
+              <button type="submit">Post</button>
+            </form>
+            <div id="commentList" class="list timeline"></div>
+          </section>
+
+          <section class="panel span-2">
+            <div class="section-title"><h3>Recent activity</h3></div>
+            <div id="activityList" class="list timeline"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="adminView" class="hidden">
+        <div class="stats-grid" id="statsGrid"></div>
+        <div class="admin-grid">
+          <section class="panel">
+            <div class="section-title"><h3>Create Client/User</h3></div>
+            <form id="userForm" class="stack compact-form">
+              <input id="userFullName" placeholder="Full name" required>
+              <input id="userEmail" type="email" placeholder="Email" required>
+              <input id="userPassword" type="password" placeholder="Password" required>
+              <select id="userRole"><option>Client</option><option>Admin</option></select>
+              <input id="userCompany" placeholder="Company name" required>
+              <button type="submit">Create user</button>
+            </form>
+          </section>
+
+          <section class="panel">
+            <div class="section-title"><h3>Create Project</h3></div>
+            <form id="projectForm" class="stack compact-form">
+              <input id="projectName" placeholder="Project name" required>
+              <input id="projectClient" placeholder="Client name" required>
+              <input id="projectLocation" placeholder="Location" required>
+              <select id="projectStatus"><option>Planning</option><option selected>InProgress</option><option>OnHold</option><option>Completed</option><option>Closed</option></select>
+              <input id="projectProgress" type="number" min="0" max="100" value="10" required>
+              <input id="projectBudget" placeholder="Budget summary" required>
+              <input id="projectBim" placeholder="BIM package reference" required>
+              <input id="projectSafety" placeholder="Safety summary" required>
+              <textarea id="projectDescription" placeholder="Project description" required></textarea>
+              <select id="projectClients" multiple></select>
+              <button type="submit">Create project</button>
+            </form>
+          </section>
+
+          <section class="panel span-2">
+            <div class="section-title"><h3>Create Task for Selected Project</h3></div>
+            <form id="taskForm" class="task-form">
+              <input id="taskTitle" placeholder="Task title" required>
+              <input id="taskDescription" placeholder="Description" required>
+              <input id="taskAssignedTo" placeholder="Assigned to" required>
+              <select id="taskPriority"><option>Low</option><option selected>Medium</option><option>High</option><option>Critical</option></select>
+              <select id="taskStatus"><option selected>Pending</option><option>InProgress</option><option>Blocked</option><option>Completed</option></select>
+              <input id="taskDueDate" type="date">
+              <button type="submit">Create task</button>
+            </form>
+          </section>
+
+          <section class="panel span-2">
+            <div class="section-title"><h3>Users</h3></div>
+            <div id="userList" class="table-like"></div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
