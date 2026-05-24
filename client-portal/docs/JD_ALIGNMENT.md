@@ -1,6 +1,6 @@
 # Job Description Alignment
 
-This project is designed around a web developer internship in construction and infrastructure digital systems.
+This project is designed in construction and infrastructure digital systems.
 
 | JD Area | Project Evidence |
 |---|---|
@@ -13,4 +13,4 @@ This project is designed around a web developer internship in construction and i
 | Documentation and Reporting | API reference, deployment guide, test plan, README, and structured project setup |
 | Construction Context | Project status, site location, safety summary, BIM package reference, client project documents |
 
-The portal is intentionally client-facing rather than purely technical, so it reflects the type of real-client digital platform work described in the internship posting.
+The portal is intentionally client-facing rather than purely technical, so it reflects the type of real-client digital platform work.
