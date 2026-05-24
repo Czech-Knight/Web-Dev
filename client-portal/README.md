@@ -126,17 +126,4 @@ buildtrack-client-portal/
 | POST | `/api/documents/upload` | Upload project document |
 | GET | `/api/documents/project/{projectId}` | List project documents |
 
-## Portfolio Positioning
 
-This project can be described on a resume as:
-
-> Built a full-stack construction client portal using ASP.NET Core, MongoDB, and vanilla JavaScript, supporting role-based dashboards, project tracking, document uploads, task management, client comments, and deployment-ready documentation for IIS/AWS-style hosting.
-
-## Notes for GitHub
-
-Before publishing:
-
-1. Keep `.env.sample` but do not commit real secrets.
-2. Do not commit uploaded documents from `/uploads`.
-3. Update the README screenshots after running the app locally.
-4. Replace demo credentials before public deployment.
