@@ -15,11 +15,11 @@ Suggested README preview layout after adding screenshots:
 ```md
 | Dashboard Overview | Demand Forecast |
 |---|---|
-| ![Dashboard Overview](docs/screenshots/dashboard-overview.png) | ![Demand Forecast](docs/screenshots/demand-forecast.png) |
+| ![Dashboard Overview](docs/screenshots/01-dashboard-overview.png) | ![Demand Forecast](docs/screenshots/demand-forecast.png) |
 
 | Skill Gap Ranking | Scenario Simulator |
 |---|---|
-| ![Skill Gap Ranking](docs/screenshots/skill-gap-ranking.png) | ![Scenario Simulator](docs/screenshots/scenario-simulator.png) |
+| ![Skill Gap Ranking](docs/screenshots/02-skill-gap-ranking.png) | ![Scenario Simulator](docs/screenshots/scenario-simulator.png) |
 ```
 
 ---
