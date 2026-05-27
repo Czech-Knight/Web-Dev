@@ -2,7 +2,7 @@
 
 If npm tries to download packages from an internal registry URL such as:
 
-`packages.applied-caas-gateway1.internal.api.openai.org`
+`packages.applied-caas-gateway1.internal.api.org`
 
 remove old lock files and force npm to use the public npm registry.
 
