@@ -12,15 +12,13 @@ Add screenshots after running the app locally. Recommended screenshot names and 
 
 Suggested README preview layout after adding screenshots:
 
-```md
 | Dashboard Overview | Demand Forecast |
 |---|---|
 | ![Dashboard Overview](docs/screenshots/01-dashboard-overview.png) | ![Demand Forecast](docs/screenshots/02-demand-forecast.png) |
 
-| Skill Gap Ranking | Scenario Simulator |
+| Skill Gap Analysis | Occupation Table |
 |---|---|
-| ![Skill Gap Ranking](docs/screenshots/03-skill-gap-ranking.png) | ![Scenario Simulator](docs/screenshots/04-occupation-table.png) |
-```
+| ![Skill Gap Analysis](docs/screenshots/03-skill-gap-analysis.png) | ![Occupation Table](docs/screenshots/04-occupation-table.png) |
 
 ---
 
@@ -220,28 +218,6 @@ Example output:
   "recommendedAction": "Scale the training program and connect graduates directly to high-demand roles."
 }
 ```
-
----
-
-## Screenshots to Add
-
-After running the app, capture and add these screenshots inside `docs/screenshots/`:
-
-1. `dashboard-overview.png` - hero section and KPI cards
-2. `demand-forecast.png` - forecast chart for a selected occupation
-3. `skill-gap-ranking.png` - skill gap chart and priority list
-4. `occupation-table.png` - occupation dataset table
-5. `scenario-simulator.png` - scenario simulator after running a result
-6. `api-health.png` - backend API health response
-7. `mobile-view.png` - optional responsive mobile layout
-
-Full screenshot guidance is available in [`docs/SCREENSHOTS.md`](docs/SCREENSHOTS.md).
-
----
-
-## Resume Description
-
-Built WorkforcePulse AI, a full-stack workforce analytics platform using React, TypeScript, Node.js, Express, REST APIs, and data visualization. The project integrates simulated labour market datasets, forecasting logic, skill gap analysis, and an interactive scenario simulator to support workforce planning and decision-making.
 
 ---
 
