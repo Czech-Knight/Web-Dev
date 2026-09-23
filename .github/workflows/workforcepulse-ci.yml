@@ -1,0 +1,46 @@
+name: WorkforcePulse CI
+
+on:
+  push:
+    branches: [yash]
+    paths:
+      - 'workforcepulse-ai/**'
+      - '.github/workflows/workforcepulse-ci.yml'
+  pull_request:
+    paths:
+      - 'workforcepulse-ai/**'
+      - '.github/workflows/workforcepulse-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: WorkforcePulse build and tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    defaults:
+      run:
+        working-directory: workforcepulse-ai
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            workforcepulse-ai/client/package-lock.json
+            workforcepulse-ai/server/package-lock.json
+      - name: Install dependencies from lockfiles
+        run: |
+          npm ci --prefix server
+          npm ci --prefix client
+      - name: Test server
+        run: npm run test --prefix server
+      - name: Build server
+        run: npm run build --prefix server
+      - name: Build client
+        run: npm run build --prefix client
